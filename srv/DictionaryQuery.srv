@@ -1,0 +1,4 @@
+string word
+---
+string[] case_names
+CaseInstance[] variants

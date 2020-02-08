@@ -1,0 +1,2 @@
+string[] singular
+string[] plural
