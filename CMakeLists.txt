@@ -8,6 +8,7 @@ add_message_files(
   FILES
   Command.msg
   CaseInstance.msg
+  DynAgentDiag.msg
 )
 
 add_service_files(
