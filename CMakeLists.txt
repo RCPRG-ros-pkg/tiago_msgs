@@ -9,6 +9,7 @@ add_message_files(
   Command.msg
   CaseInstance.msg
   DynAgentDiag.msg
+  HazardObject.msg
 )
 
 add_service_files(
