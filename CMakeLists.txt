@@ -10,6 +10,7 @@ add_message_files(
   CaseInstance.msg
   DynAgentDiag.msg
   HazardObject.msg
+  NewIntent.msg
 )
 
 add_service_files(
