@@ -1,26 +1,30 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(tiago_msgs)
 
-find_package(catkin REQUIRED COMPONENTS message_generation actionlib_msgs)
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
 
-add_message_files(
-  DIRECTORY msg
-  FILES
-  Command.msg
-  CaseInstance.msg
-  DynAgentDiag.msg
-  HazardObject.msg
+# Find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(action_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+
+# Define message files
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/Command.msg"
+  "msg/CaseInstance.msg"
+  "msg/DynAgentDiag.msg"
+  "msg/HazardObject.msg"
+  "srv/DictionaryQuery.srv"
+  "action/SaySentence.action"
+  DEPENDENCIES std_msgs action_msgs builtin_interfaces
 )
 
-add_service_files(
-  FILES
-  DictionaryQuery.srv
-)
-
-add_action_files(DIRECTORY action FILES SaySentence.action)
-
-generate_messages(DEPENDENCIES actionlib_msgs)
-
-catkin_package(
-  CATKIN_DEPENDS message_runtime)
+# Export dependencies
+ament_export_dependencies(rosidl_default_runtime)
+ament_package()
 
